@@ -10,30 +10,39 @@
 
 <body>
     <main class="main">
-        <div class="esquerdaLogin">
-            <img src="img/book-animate.svg" id="imgLogin" alt="Menina sentada no livro animação">
+        <div class="esquerdaCadastro">
+            <img src="img/book-animate.svg" id="imgCadastro" alt="Menina sentada no livro animação">
             <h1 class="titulo">Seja bem-vindo(a)<br>ao seu organizador de matérias</h1>
 
         </div>
-        <div class="direitaLogin">
-            <div class="cardLogin">
-                <h1 class="login">LOGIN</h1>
+        <form id="direitaCadastro" class="direitaCadastro">
+            <div class="cardCadastro">
+                <h1 class="cadastro">CADASTRO</h1>
                 <div class="campo">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário">
+                    <label for="materia">Matéria *</label>
+                    <input type="text" id="materia" placeholder="Matéria">
+                    <p>Obrigatório preencher matéria</p>
                 </div>
-                <div class="campo Senha">
-                    <label for="senha">Senha</label>
-                    <!-- o tipo password deixa a senha oculta -->
-                    <input type="password" name="senha" placeholder="Senha">
+                <div class="campo">
+                    <label for="semestre">Semestre *</label>
+                    <input type="number" id="semestre" placeholder="Semestre">
+                    <p>Obrigatório preencher semestre</p>
+                </div>
+                <div class="campo ">
+                    <label for="prof">Professor</label>
+                    <input type="text" id="prof" placeholder="Professor">
+                </div>
+                <div class="campo">
+                    <label for="sala">Sala</label>
+                    <input type="number" id="sala" placeholder="Sala">
                 </div>
                 <div class="btn">
-                    <button class="btnEntrar">Entrar</button>
-                    <button class="btnCadastrar">Cadastrar</button>
+                    <button type="submit" class="btnCadastrar">Cadastrar</button>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
