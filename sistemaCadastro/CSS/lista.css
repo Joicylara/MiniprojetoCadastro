@@ -1,4 +1,8 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     background: rgb(204, 194, 233);
     background: linear-gradient(90deg, rgba(204, 194, 233, 1) 0%, rgba(195, 167, 237, 1) 15%, rgba(147, 80, 224, 1) 30%, rgba(80, 52, 164, 1) 55%, rgba(56, 62, 209, 1) 73%, rgba(93, 102, 242, 1) 100%);
@@ -35,12 +39,19 @@ table tbody tr:hover {
     background-color: #f9f9f9;
 }
 
+
 button {
     padding: 8px 12px;
     background-color: #007bff;
     color: #fff;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.button .btnVoltar {
+    display: flex;
+    justify-content: center;
 }
 
 button:hover {
@@ -70,7 +81,7 @@ button:hover {
     width: 50%;
 }
 
-.form input{
+.form input {
     width: 100%;
     outline: none;
     padding: 5px 10px;
@@ -85,18 +96,18 @@ button:hover {
     width: 100%;
     margin: 10px auto;
     outline: none;
-    border-radius: 20px; 
-    padding: 5px 10px; 
+    border-radius: 20px;
+    padding: 5px 10px;
     width: 100%;
     border: none;
     background-color: rgb(57, 57, 226);
     color: white;
-  }
-  
-  .active {
+}
+
+.active {
     display: flex;
-  }
-  
-  .active .form {
+}
+
+.active .form {
     animation: form .4s;
-  }
+}
