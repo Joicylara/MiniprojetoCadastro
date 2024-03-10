@@ -1,4 +1,4 @@
-# <h1>Programadores do Amanhã - Miniproejto do M2**</h1>
+<h1>Programadores do Amanhã - Miniproejto do M2</h1>
 
 <h2>Segue abaixo a descriçao do projeto:</h2>
 
