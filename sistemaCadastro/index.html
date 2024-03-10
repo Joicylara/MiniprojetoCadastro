@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
@@ -25,16 +25,16 @@
                 </div>
                 <div class="campo">
                     <label for="semestre">Semestre *</label>
-                    <input type="number" id="semestre" placeholder="Semestre">
+                    <input type="number" id="semestre" placeholder="Semestre" min="1" max="12">
                     <p>Obrigatório preencher semestre</p>
                 </div>
-                <div class="campo ">
+                <div class="campo">
                     <label for="prof">Professor</label>
                     <input type="text" id="prof" placeholder="Professor">
                 </div>
                 <div class="campo">
                     <label for="sala">Sala</label>
-                    <input type="number" id="sala" placeholder="Sala">
+                    <input type="number" id="sala" placeholder="Sala" min="1">
                 </div>
                 <div class="btn">
                     <button type="submit" class="btnCadastrar">Cadastrar</button>
@@ -42,7 +42,7 @@
             </div>
         </form>
     </main>
-    <script src="script.js"></script>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>

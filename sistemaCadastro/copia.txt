@@ -5,16 +5,39 @@ const prof = document.getElementById("prof");
 const sala = document.getElementById("sala");
 
 
-form.addEventListener("submit", (evento)=>{
-    evento.preventDefault();
+class Cadastro{
+    constructor(materiaC, semestreC, professorC, salaC){
+        this.materia = materiaC;
+        this.semestre = semestreC;
+        this.professor = professorC;
+        this.sala = salaC;
+    }
+
+    addCadastro(){
+        form.addEventListener("submit", (evento)=>{
+            evento.preventDefault();
+            validarCadastro();
+
+            
+
+        });
+        
+    }
+}
+
+
+//blur quando tira o foco do input
+materia.addEventListener("blur", () =>{
     validarMateria();
+});
+
+semestre.addEventListener("blur", () =>{
     validarSemestre();
-    // alert("Cadastrado com sucesso");
 });
 
 function validarMateria(){
     const novaMateria = materia.value;
-    if(novaMateria == ""){
+    if(novaMateria === ""){
         erroInput(materia, "Obrigatório preencher matéria");
     }else{
         const item = materia.parentElement;
@@ -25,7 +48,7 @@ function validarMateria(){
 
 function validarSemestre(){
     const novoSemestre = semestre.value;
-    if(novoSemestre == ""){
+    if(novoSemestre === ""){
         erroInput(semestre, "Obrigatório preencher semestre");
     }else{
         const item = semestre.parentElement;
@@ -39,4 +62,19 @@ function erroInput(input, mensagem){
 
     mensagemErro.innerText = mensagem;
     item.className = "campo erro";
+}
+
+function validarCadastro(){
+    validarMateria();
+    validarSemestre();
+    const itemForm = form.querySelectorAll(".campo");
+    //o every verifica se o array passa em toda a codição
+    const valido = [...itemForm].every( (item) =>{
+        return item.className === "campo"
+    });
+    if(valido){
+        alert("Cadastrado com sucesso");
+    }
+    // console.log(valido);
+    
 }
