@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista dos dados</title>
+    <title>Lista dos Cadastros</title>
     <link rel="stylesheet" href="CSS/lista.css">
 </head>
-<body>
-    <main class="main">
 
-    
-</main>
-<script src="JS/lista.js"></script>
+<body>
+    <h1>Lista dos Cadastros</h1>
+    <table id="cadastroTable">
+        <thead>
+            <tr>
+                <th>Matéria</th>
+                <th>Semestre</th>
+                <th>Professor</th>
+                <th>Sala</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridos os dados da tabela dinamicamente -->
+        </tbody>
+    </table>
+
+    <div class="cadastroForm">
+        <div class="form">
+            <form>
+                <label for="materia">Matéria:</label>
+                <input type="text" id="materia" name="materia" required><br><br>
+
+                <label for="semestre">Semestre:</label>
+                <input type="number" id="semestre" name="semestre" min="1" max="12"><br><br>
+
+                <label for="professor">Professor:</label>
+                <input type="text" id="professor" name="professor" required><br><br>
+
+                <label for="sala">Sala:</label>
+                <input type="number" id="sala" name="sala" min="1"><br><br>
+
+                <input type="hidden" id="editIndex" name="editIndex">
+                <button type="submit">Salvar Cadastro</button>
+                <button type="button" id="cancelButton">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <script src="JS/lista.js"></script>
 </body>
+
 </html>

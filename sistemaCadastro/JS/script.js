@@ -62,26 +62,34 @@ class Cadastro {
         });
         if (valido) {
             alert("Cadastrado com sucesso");
-            window.location.href = "lista.html";
+            
+            if(!localStorage.getItem("cadastros")){
+                localStorage.setItem('cadastros', JSON.stringify([]))
+            }
+            const cadastros = JSON.parse(localStorage.getItem("cadastros"));
             //armazenar os dados localmente para usar no html lista
-            localStorage.setItem('cadastro', JSON.stringify({
-                materia: this.materia.value,
-                semestre: this.semestre.value,
-                professor: this.prof.value,
-                sala: this.sala.value
-            }));
+
+            localStorage.setItem('cadastros', JSON.stringify(
+                [...cadastros,  {
+                    materia: this.materia.value,
+                    semestre: this.semestre.value,
+                    professor: this.prof.value,
+                    sala: this.sala.value
+                }]
+               ));
             this.mostrarDados();
+            window.location.href = "lista.html";
         }
     }
 
-    // mostrarDados() {
-    //     console.table({
-    //         Materia: this.materia.value,
-    //         Semestre: this.semestre.value,
-    //         Professor: this.prof.value,
-    //         Sala: this.sala.value
-    //     });
-    // }
+    mostrarDados() {
+        console.table({
+            Materia: this.materia.value,
+            Semestre: this.semestre.value,
+            Professor: this.prof.value,
+            Sala: this.sala.value
+        });
+    }
 
 }
 
@@ -93,11 +101,6 @@ const materia = document.getElementById("materia");
 const semestre = document.getElementById("semestre");
 const prof = document.getElementById("prof");
 const sala = document.getElementById("sala");
-
-let itens;
-let id;
-
-
 
 const novoCadastro = new Cadastro(materia, semestre, prof, sala);
 novoCadastro.addCadastro();

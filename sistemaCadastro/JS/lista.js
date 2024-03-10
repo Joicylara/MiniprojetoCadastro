@@ -1,80 +1,92 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Selecione o elemento <main>
-    const mainElement = document.querySelector('main');
+    const cadastroTable = document.getElementById('cadastroTable').getElementsByTagName('tbody')[0];
+    const form = document.querySelector('.cadastroForm');
+    const cancelButton = document.getElementById('cancelButton');
 
-    // Recupere os dados armazenados localmente
-    const cadastroSalvo = localStorage.getItem('cadastro');
-    if (cadastroSalvo) {
-        const cadastro = JSON.parse(cadastroSalvo);
-        // Crie uma instância da classe Lista com os dados recuperados
-        const listaCadastro = new Lista(cadastro.materia, cadastro.semestre, cadastro.professor, cadastro.sala);
-        // Crie o card com os dados da lista
-        const card = listaCadastro.criarCard();
-        
-        // Adicione o card ao main
-        mainElement.appendChild(card);
-
-        // Crie o botão "Adicionar Matéria"
-        const botaoAdicionar = document.createElement('button');
-        botaoAdicionar.textContent = 'Adicionar Matéria';
-        botaoAdicionar.classList.add('adicionarMateria');
-        // Adicione o evento de clique ao botão
-        botaoAdicionar.addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
+    const cadastrosSalvos = JSON.parse(localStorage.getItem('cadastros')) || [];
     
-        // Adicione o botão após o card
-        mainElement.appendChild(botaoAdicionar);
+
+   
+    function exibirCadastros() {
+        cadastroTable.innerHTML = ''; 
+        cadastrosSalvos.forEach((cadastro, index) => {
+            const row = cadastroTable.insertRow();
+            row.innerHTML = `
+                <td>${cadastro.materia}</td>
+                <td>${cadastro.semestre}</td>
+                <td>${cadastro.professor}</td>
+                <td>${cadastro.sala}</td>
+                <td>
+                    <button onclick="editarCadastro(${index})">Editar</button>
+                    <button onclick="excluirCadastro(${index})">Excluir</button>
+                </td>
+            `;
+        });
+        console.log(cadastrosSalvos);
+    }
+
+    exibirCadastros(); 
+
+    
+    if (cancelButton) {
+        cancelButton.addEventListener('click', function() {
+           
+            form.classList.remove('active');
+        });
     }
 });
 
-class Lista {
-    constructor(materia, semestre, professor, sala) {
-        this.materia = materia;
-        this.semestre = semestre;
-        this.professor = professor;
-        this.sala = sala;
-    }
+// Função para editar um cadastro
+function editarCadastro(index) {
+    const cadastrosSalvos = JSON.parse(localStorage.getItem('cadastros')) || [];
+    const cadastro = cadastrosSalvos[index];
+    const form = document.querySelector('.cadastroForm form');
 
-    criarCard() {
-        // Crie um elemento de card
-        const card = document.createElement('div');
-        card.classList.add('cardLista');
     
-        // Crie o corpo do card
-        const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-    
-        const titulo = document.createElement('h1');
-        titulo.classList.add('tituloSemestre');
-        titulo.textContent = `Semestre ${this.semestre}`;
-    
-        // Crie uma lista não ordenada
-        const lista = document.createElement('ul');
-        lista.classList.add('lista');
-    
-        // Crie os itens da lista
-        const itemMateria = document.createElement('li');
-        itemMateria.textContent = `Matéria: ${this.materia}`;
-    
-        const itemProfessor = document.createElement('li');
-        itemProfessor.textContent = `Professor: ${this.professor}`;
-    
-        const itemSala = document.createElement('li');
-        itemSala.textContent = `Sala: ${this.sala}`;
-    
-        // Adicione os itens à lista
-        lista.appendChild(itemMateria);
-        lista.appendChild(itemProfessor);
-        lista.appendChild(itemSala);
-    
-        // Adicione a lista ao corpo do card
-        cardBody.appendChild(titulo);
-        cardBody.appendChild(lista);
-    
-        // Adicione o corpo do card ao card
-        card.appendChild(cardBody);
-    
-        return card;
+    form.querySelector('#materia').value = cadastro.materia;
+    form.querySelector('#semestre').value = cadastro.semestre;
+    form.querySelector('#professor').value = cadastro.professor;
+    form.querySelector('#sala').value = cadastro.sala;
+
+   
+    form.querySelector('#editIndex').value = index;
+
+   
+    const cadastroForm = document.querySelector('.cadastroForm');
+    cadastroForm.classList.add('active');
+
+    // Adiciona um evento de 'submit' para o formulário de edição
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Obtém os novos valores dos campos do formulário
+        const materia = form.querySelector('#materia').value;
+        const semestre = form.querySelector('#semestre').value;
+        const professor = form.querySelector('#professor').value;
+        const sala = form.querySelector('#sala').value;
+
+        // Atualiza o cadastro no array de cadastrosSalvos
+        cadastrosSalvos[index] = {
+            materia: materia,
+            semestre: semestre,
+            professor: professor,
+            sala: sala
+        };
+
+        // Salva os dados atualizados no armazenamento local
+        localStorage.setItem('cadastros', JSON.stringify(cadastrosSalvos));
+
+        
+        location.reload();
+    });
+}
+
+// Função para excluir um cadastro
+function excluirCadastro(index) {
+    if (confirm('Tem certeza que deseja excluir este cadastro?')) {
+        const cadastrosSalvos = JSON.parse(localStorage.getItem('cadastros')) || [];
+        cadastrosSalvos.splice(index, 1);
+        localStorage.setItem('cadastros', JSON.stringify(cadastrosSalvos));
+        location.reload(); // Recarrega a página para atualizar a tabela
     }
 }
