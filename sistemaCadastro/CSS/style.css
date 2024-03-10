@@ -213,7 +213,7 @@ p {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 70vw;
+        width: 100%;
         height: auto; /* Alterado para 'auto' para ajustar conforme o conteúdo */
     }
 
