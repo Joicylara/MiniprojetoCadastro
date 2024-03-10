@@ -127,8 +127,8 @@ p {
     visibility: visible;
 }
 
-@media screen and (min-width: 769px)  {
-    
+@media screen and (min-width: 769px) {
+
     .esquerdaCadastro {
         display: flex;
         flex-direction: column;
@@ -167,28 +167,98 @@ p {
 
     .main {
         display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 130vh;
+
+    }
+
+    #direitaCadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40vw;
+        height: 130vh;
+    }
+
+    .esquerdaCadastro {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-
-    .esquerdaCadastro,
-    .direitaCadastro {
-        width: 80%;
+        width: 50vw;
+        height: 100vh;
     }
 
     #imgCadastro {
-        width: 60vw;
+        width: 25vw;
     }
 
     .titulo {
-        font-size: 6vw;
+        font-size: 3vw;
         color: #060d50;
     }
 
     .cardCadastro {
-        width: 80%;
+        width: 90%;
         height: 90%;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70vw;
+        height: auto; /* Alterado para 'auto' para ajustar conforme o conteúdo */
+    }
+
+    #direitaCadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150%; /* Ajustado para ocupar toda a largura da tela */
+        height: 190vh;
+    }
+
+    .esquerdaCadastro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Ajustado para ocupar toda a largura da tela */
+        height: auto; /* Alterado para 'auto' para ajustar conforme o conteúdo */
+    }
+
+    #imgCadastro {
+        width: 40vw;
+    }
+
+    .titulo {
+        font-size: 4vw;
+        color: #060d50;
+    }
+    .btn .btnCadastrar {
+        width: 100%;
+        border-radius: 10px;
+        font-weight: bolder;
+        border: none;
+        background: #238592;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .cadastro{
+        font-size: 8vw;
+    }
+    .cardCadastro {
+        width: 50%;
+        height: 70%;
+        padding: 30px 36px;
     }
 }
 
