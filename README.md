@@ -2,7 +2,8 @@
 
 <h2>Segue abaixo a descriçao do projeto:</h2>
 
-Muitos projetos sociais, muitas escolas, empresas, dentre várias outras, utilizam um sistema de cadastro, seja de animais, plantas, funcionários, alunos, dentre outras tantas possibilidades. Ter esses dados cadastrados permite gerenciar da melhor forma possível.
-Por isso que neste projeto você deve utilizar as tecnologias HTML, CSS & Javascript para criar uma página de cadastro (podendo ser um cadastro da sua preferência, como animais, alunos, etc…) o site deve permitir cadastrar, listar os cadastrados, editar um cadastro e excluir um cadastro, tudo isso usando Arrays, Class & DOM.
+Muitos projetos sociais, escolas e empresas, entre outros, adotam sistemas de cadastro para diferentes fins, como animais, plantas, funcionários, alunos, entre outros. A existência desses registros permite um gerenciamento mais eficiente.
+
+Portanto, neste projeto, foi utilizado as tecnologias HTML, CSS e JavaScript para desenvolver uma página de cadastro. O tema escolhido foi cadastro de matérias. O site contém a possibilitar de inclusão, listagem, edição e exclusão de registros, utilizando Arrays, Classes e o DOM.
  
  [Deployed do projeto](https://miniprojeto-cadastro.vercel.app/)
